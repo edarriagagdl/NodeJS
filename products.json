@@ -1,0 +1,12 @@
+{"id":3,"products":[
+{"code":1111,"name":"product1_updated","description":"paper","price":120,"stock":3,"thumbnail":"paper.jpg","id":1},
+{"code":2222,"name":"product2","description":"pencil","price":220,"stock":4,"thumbnail":"pencil.jpg","id":2},
+{"code":3333,"name":"product3","description":"pencil3","price":220,"stock":5,"thumbnail":"pencil.jpg","id":3},
+{"code":4444,"name":"product4","description":"pencil4","price":220,"stock":8,"thumbnail":"pencil.jpg","id":4},
+{"code":5555,"name":"product5","description":"pencil5","price":220,"stock":10,"thumbnail":"pencil.jpg","id":5},
+{"code":6666,"name":"product6","description":"pencil6","price":220,"stock":14,"thumbnail":"pencil.jpg","id":6},
+{"code":7777,"name":"product7","description":"pencil7","price":220,"stock":20,"thumbnail":"pencil.jpg","id":7},
+{"code":8888,"name":"product8","description":"pencil8","price":220,"stock":10,"thumbnail":"pencil.jpg","id":8},
+{"code":9999,"name":"product9","description":"pencil9","price":220,"stock":100,"thumbnail":"pencil.jpg","id":9},
+{"code":1010,"name":"product10","description":"pencil10","price":220,"stock":40,"thumbnail":"pencil.jpg","id":10}
+]}

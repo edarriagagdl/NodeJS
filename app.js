@@ -38,7 +38,10 @@ app.get('/products/:idProduct', (req, res) => {
     });
   } else {
     return res.status(404).send({
-      error: 'The product with id ' + idProduct + ' is invalid',
+      error:
+        'The product with id ' +
+        idProduct +
+        ' is invalid or not a numeric value',
     });
   }
 });

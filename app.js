@@ -11,20 +11,34 @@ productManager.loadProductsFromFile('products.json').then(() => {
 app.get('/products', (req, res) => {
   let limit = req.query.limit;
   console.log('Limit is ' + limit);
-  if (limit) {
+  if (limit && !isNaN(limit)) {
     let productLimited = productManager.getProducts().slice(0, limit);
     return res.send(productLimited);
+  } else {
+    return res.status(400).send({
+      error:
+        'the limit value was not provided or it is invalid, valid values are 1-10',
+    });
   }
   return res.send(productManager.getProducts());
 });
 
 app.get('/products/:idProduct', (req, res) => {
   let idProduct = req.params.idProduct;
-  let product = productManager.getProductById(idProduct);
-  if (product !== undefined) {
-    return res.send(product);
+  if (idProduct && !isNaN(idProduct)) {
+    let product = productManager.getProductById(idProduct);
+    if (product !== undefined) {
+      return res.send(product);
+    }
+    return res.status(404).send({
+      error:
+        'The product with id ' +
+        idProduct +
+        ' is not found in the products catalog',
+    });
+  } else {
+    return res.status(404).send({
+      error: 'The product with id ' + idProduct + ' is invalid',
+    });
   }
-  return res.send({
-    error: 'The product with id ' + idProduct + ' is not found in the products',
-  });
 });

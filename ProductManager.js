@@ -6,18 +6,21 @@ class ProductManager {
   #products = [];
   // id for the products
   #id = 0;
+  // this is the default path to the products file.
   #path = 'productos.json';
+  #fileLoaded = false;
 
   constructor(pathToProductos) {
     this.#path = pathToProductos;
-    /*    this.loadProductsFromFile(this.#path);
-    console.log('products loaded from file');
-    console.log(this.#products); */
   }
 
   // returns the array that contains the products
   getProducts() {
     return this.#products;
+  }
+
+  isFileLoaded() {
+    return this.#fileLoaded;
   }
 
   validateProductFields(product) {
@@ -115,9 +118,19 @@ class ProductManager {
             this.#id = obj.id;
           }
         }
-        console.log('The file was read');
+        this.#fileLoaded = true;
+        console.log('The file was read: ' + this.#fileLoaded);
+      } else {
+        console.error(
+          'Error: The file ' +
+            pathToProducts +
+            ' does not exists or it is not readable'
+        );
       }
     } catch (err) {
+      console.error(
+        'Error: There was an error loading the file ' + pathToProducts
+      );
       console.error(err);
     }
   }

@@ -5,25 +5,41 @@ app.use(express.urlencoded({ extended: true }));
 app.listen(8080, () => console.log('Listo para probar caso practico'));
 
 productManager.loadProductsFromFile('products.json').then(() => {
-  console.log('products are loaded');
+  if (!productManager.isFileLoaded())
+    console.log('The products file could not be loaded, please try later');
 });
 
 app.get('/products', (req, res) => {
+  if (!productManager.isFileLoaded())
+    return res.status(500).send({
+      error: 'The products file could not be loaded, please try later',
+    });
   let limit = req.query.limit;
   console.log('Limit is ' + limit);
-  if (limit && !isNaN(limit)) {
-    let productLimited = productManager.getProducts().slice(0, limit);
-    return res.send(productLimited);
+  if (limit) {
+    if (!isNaN(limit)) {
+      let productLimited = productManager.getProducts().slice(0, limit);
+      return res.send(productLimited);
+    } else {
+      return res.status(400).send({
+        error: 'The limit is not a numeric value',
+      });
+    }
   } else {
-    return res.status(400).send({
-      error:
-        'the limit value was not provided or it is invalid, valid values are 1-10',
-    });
+    if (productManager.getProducts().length > 0)
+      return res.send(productManager.getProducts());
+    else
+      return res.status(500).send({
+        error: 'The products catalog is empty',
+      });
   }
-  return res.send(productManager.getProducts());
 });
 
 app.get('/products/:idProduct', (req, res) => {
+  if (!productManager.isFileLoaded())
+    return res.status(500).send({
+      error: 'The products file could not be loaded, please try later',
+    });
   let idProduct = req.params.idProduct;
   if (idProduct && !isNaN(idProduct)) {
     let product = productManager.getProductById(idProduct);

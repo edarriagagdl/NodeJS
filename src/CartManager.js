@@ -21,6 +21,7 @@ class CartManager {
     return this.#carts;
   }
 
+ 
   /**
    *  This method will add the cart object passed as parameter into the array of carts if the products of the carts are valid.
    * @param {*} cart
@@ -29,15 +30,14 @@ class CartManager {
   createNewCart(cart) {
     this.#id = this.#id + 1;
     cart.id = this.#id;
-    if (cart.products != undefined) {
-      this.#carts.push(cart);
-      console.log('The cart with id ' + cart.id + ' was created scuessfully');
-      console.log('Content of the cart:' + JSON.stringify(this.#carts));
-    } else {
-      throw new Error('Error: The cart must have at least a product');
-    }
+    if (cart.products == undefined)
+      cart.products = [];
+    this.#carts.push(cart);
+    console.log('The cart with id ' + cart.id + ' was created scuessfully');
+    console.log('Content of the cart:' + JSON.stringify(this.#carts));
     return cart;
   }
+
 
   // returns a cart that matches an id, otherwise will return "Not found"
   /**

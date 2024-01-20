@@ -2,7 +2,8 @@ The products.json and shoppingCart files are inside the src dir
 ![image](https://github.com/edarriagagdl/NodeJS/assets/60407032/a438c572-f259-425e-bbe1-ba5e5a5d25fb)
 
 The app is up and runnung:
-![image](https://github.com/edarriagagdl/NodeJS/assets/60407032/31b3bd34-b6b2-4e82-8685-2b225139f6c7)
+![image](https://github.com/edarriagagdl/NodeJS/assets/60407032/d37d3c9a-3acf-4b07-9c2f-7cb13c9090f0)
+
 
 The api is working:
 List of the products:
